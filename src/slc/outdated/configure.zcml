@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="slc.outdated">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="slc.outdated"
+      directory="profile"
+      description="Extension profile for slc.outdated."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+  
+  <permission
+      id="slc.ToggleOutdated"
+      title="slc: Toggle outdated"
+      />
+
+  <browser:page
+      for="*"
+      name="object_toggle_outdated"
+      permission="slc.ToggleOutdated"
+      class=".ToggleOutdated"
+      />
+
+  <adapter factory=".OutdatedIndexer" name="outdated" />
+
+</configure>
