@@ -8,3 +8,4 @@ and included in the metadata.
 
 It can be used in views to indicate that certain content is considered
 to be outdated.
+
