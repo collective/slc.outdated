@@ -1,13 +1,12 @@
 from Products.Five.browser import BrowserView
 from Products.ZCatalog.interfaces import IZCatalog
 from Products.statusmessages.interfaces import IStatusMessage
+from plone.app.layout.viewlets.common import ViewletBase
 from plone.indexer.interfaces import IIndexer
-from zope.annotation.interfaces import (
-    IAnnotatable,
-    IAnnotations,
-)
-from zope.interface import implements
+from zope.annotation.interfaces import IAnnotatable
+from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
+from zope.interface import implements
 
 
 ANNOTATION_KEY="slc.outdated"
@@ -59,3 +58,14 @@ class ToggleOutdated(BrowserView):
         messages.addStatusMessage(msg, type="info")
         self.request.response.redirect(self.context.absolute_url())
         self.context.reindexObject(idxs=["outdated"])
+
+
+class OutdatedViewlet(ViewletBase):
+    """A viewlet that indicates that content is outdated
+    """
+    outdated = Outdated()
+
+    def render(self):
+        if not self.outdated:
+            return ""
+        return super(OutdatedViewlet, self).render()

@@ -26,4 +26,13 @@
 
   <adapter factory=".OutdatedIndexer" name="outdated" />
 
+  <browser:viewlet
+      name="slc.outdated"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+      class=".OutdatedViewlet"
+      template="viewlet.pt"
+      layer="slc.outdated.interfaces.IAddOnInstalled"
+      permission="zope2.View"
+      />
+
 </configure>

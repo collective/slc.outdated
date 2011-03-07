@@ -1,0 +1,6 @@
+<layers>
+  <layer
+      name="slc.outdated"
+      interface="slc.outdated.interfaces.IAddOnInstalled"
+      />
+</layers>

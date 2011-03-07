@@ -1,4 +1,3 @@
 * Tasks                                                   :slc:outdated:osha:
-** TODO adjust views
 ** TODO add tests
 ** TODO translations

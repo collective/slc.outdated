@@ -1,0 +1,9 @@
+<div id="slc-outdated">
+  <h2 class="slc-outdated" tal:content="context/outdated_info/Title | string:OUTDATED" />
+  <span tal:condition="exists:context/outdated_info">
+    <tal:content replace="structure context/outdated_info/getText" />
+  </span>
+  <span tal:condition="not:exists:context/outdated_info">
+    This content has been marked as outdated.
+  </span>
+</div>
