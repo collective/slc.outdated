@@ -24,6 +24,11 @@
       class=".ToggleOutdated"
       />
 
+    <browser:resource
+        file="outdated.png"
+        name="outdated.png"
+        />
+
   <adapter factory=".OutdatedIndexer" name="outdated" />
 
   <browser:viewlet
