@@ -6,7 +6,7 @@
       <property name="title"
                 i18n:translate="">Toggle outdated</property>
       <property
-          name="url_expr">string:${globals_view/getCurrentObjectUrl}/object_toggle_outdated</property>
+          name="url_expr">string:${object_url}/object_toggle_outdated</property>
       <property
           name="available_expr">python:checkPermission("slc: Toggle outdated", object) and not globals_view.isPortalOrPortalDefaultPage()</property>
       <property name="permissions">
