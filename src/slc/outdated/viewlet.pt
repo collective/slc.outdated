@@ -4,6 +4,6 @@
     <tal:content replace="structure context/outdated_info/getText" />
   </span>
   <span tal:condition="not:exists:context/outdated_info">
-    This content has been marked as outdated.
+    <p>This content has been marked as outdated.</p>
   </span>
 </div>
