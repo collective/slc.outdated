@@ -29,6 +29,11 @@
         name="outdated.png"
         />
 
+    <browser:resource
+        file="outdated_mini.png"
+        name="outdated_mini.png"
+        />
+
   <adapter factory=".OutdatedIndexer" name="outdated" />
 
   <browser:viewlet
