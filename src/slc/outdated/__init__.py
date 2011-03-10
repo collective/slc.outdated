@@ -1,3 +1,4 @@
+from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five.browser import BrowserView
 from Products.ZCatalog.interfaces import IZCatalog
 from Products.statusmessages.interfaces import IStatusMessage
@@ -53,7 +54,10 @@ class ToggleOutdated(BrowserView):
             msg = u"Marked '%s' as outdated."
         else:
             msg = u"Removed outdated flag from '%s'."
-        msg = msg % (self.context.title_or_id(),)
+        name = self.context.title_or_id()
+        if not isinstance(name, unicode):
+            name = name.decode(getSiteEncoding(self.context))
+        msg = msg % name
         messages = IStatusMessage(self.request)
         messages.addStatusMessage(msg, type="info")
         self.request.response.redirect(self.context.absolute_url())
