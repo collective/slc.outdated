@@ -48,8 +48,11 @@ class ToggleOutdated(BrowserView):
     """
     outdated = Outdated()
 
-    def __call__(self):
-        self.outdated = not self.outdated
+    def __call__(self, value=None):
+        if value is None:
+            self.outdated = not self.outdated
+        else:
+            self.outdated = not not value
         if self.outdated:
             msg = u"Marked '%s' as outdated."
         else:
