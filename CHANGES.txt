@@ -1,0 +1,8 @@
+slc.outdated Changelog
+======================
+
+1.0b8 (unreleased)
+-------------------
+
+- Testing for IAnnotatable to allow calling content on portlets like feedmixer does. Fixes http://gorecibo2.appspot.com/view/aglnb3JlY2libzJyDgsSBUVycm9yGMfIwgEM/ 
+  [pilz]

@@ -19,12 +19,15 @@ class Outdated(object):
     def __get__(self, obj, objtype=None):
         if obj is None:
             return self
-        return IAnnotations(obj.context).get(ANNOTATION_KEY, False)
-
+        if IAnnotatable.providedBy(obj.context):
+            return IAnnotations(obj.context).get(ANNOTATION_KEY, False)
+        return False
+        
     def __set__(self, obj, val):
         if obj is None:
             raise AttributeError("Can't set attribute")
-        IAnnotations(obj.context)[ANNOTATION_KEY] = val
+        if IAnnotatable.providedBy(obj.context):
+            IAnnotations(obj.context)[ANNOTATION_KEY] = val
 
 
 class OutdatedIndexer(object):
