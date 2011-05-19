@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '1.0b7'
+version = '1.0b8dev'
 shortdesc = "Mark and treat plone content as outdated"
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 
