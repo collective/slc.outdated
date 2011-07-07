@@ -52,6 +52,13 @@ class ToggleOutdated(BrowserView):
     outdated = Outdated()
 
     def __call__(self, value=None):
+        msg = self.toggle(value)
+        messages = IStatusMessage(self.request)
+        messages.addStatusMessage(msg, type="info")
+        self.request.response.redirect(self.context.absolute_url())
+
+    def toggle(self, value=None):
+        """ same as __call__ but without the redirect """
         if value is None:
             self.outdated = not self.outdated
         else:
@@ -64,11 +71,8 @@ class ToggleOutdated(BrowserView):
         if not isinstance(name, unicode):
             name = name.decode(getSiteEncoding(self.context))
         msg = msg % name
-        messages = IStatusMessage(self.request)
-        messages.addStatusMessage(msg, type="info")
-        self.request.response.redirect(self.context.absolute_url())
         self.context.reindexObject(idxs=["outdated"])
-
+        return msg
 
 class OutdatedViewlet(ViewletBase):
     """A viewlet that indicates that content is outdated
