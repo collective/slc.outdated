@@ -1,7 +1,7 @@
 slc.outdated Changelog
 ======================
 
-1.0b8 (unreleased)
+1.0b8 (2011-07-21)
 ------------------
 
 - Added possibility to use the ToggleOutdated view without being forced into a
