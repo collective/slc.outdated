@@ -1,6 +1,12 @@
 slc.outdated Changelog
 ======================
 
+1.0b9 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 1.0b8 (2011-07-21)
 ------------------
 
