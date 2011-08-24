@@ -34,7 +34,7 @@
         name="outdated_mini.png"
         />
 
-  <adapter factory=".OutdatedIndexer" name="outdated" />
+  <adapter factory=".adapter.OutdatedIndexer" name="outdated" />
 
   <browser:viewlet
       name="slc.outdated"
