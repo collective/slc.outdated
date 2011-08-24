@@ -4,21 +4,14 @@ from Products.ZCatalog.interfaces import IZCatalog
 from Products.statusmessages.interfaces import IStatusMessage
 from plone.app.layout.viewlets.common import ViewletBase
 from plone.indexer.interfaces import IIndexer
+from slc.outdated.interfaces import IObjectOutdatedToggleEvent
 from zope.annotation.interfaces import IAnnotatable
 from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
-from zope.component.interfaces import IObjectEvent
-from zope.interface import Attribute, implements
+from zope.interface import implements
 from zope.event import notify
 
 ANNOTATION_KEY="slc.outdated"
-
-
-class IObjectOutdatedToggleEvent(IObjectEvent):
-    """Sent after an object was translated."""
-
-    object = Attribute("The object being handled.")
-    status = Attribute("The new outdated status.")
 
 
 class ObjectOutdatedToggleEvent(object):
