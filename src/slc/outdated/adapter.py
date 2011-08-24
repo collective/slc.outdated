@@ -6,6 +6,7 @@ from zope.interface import implements
 
 ANNOTATION_KEY = 'slc.outdated'
 
+
 class Outdated(object):
     """Descriptor object to retrieve and set the outdated flag
     """
@@ -15,7 +16,7 @@ class Outdated(object):
         if IAnnotatable.providedBy(obj.context):
             return IAnnotations(obj.context).get(ANNOTATION_KEY, False)
         return False
-        
+
     def __set__(self, obj, val):
         if obj is None:
             raise AttributeError("Can't set attribute")
@@ -37,4 +38,3 @@ class OutdatedIndexer(object):
 
     def __call__(self):
         return self.outdated
-
