@@ -2,7 +2,6 @@ from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five.browser import BrowserView
 from Products.ZCatalog.interfaces import IZCatalog
 from Products.statusmessages.interfaces import IStatusMessage
-from plone.app.layout.viewlets.common import ViewletBase
 from plone.indexer.interfaces import IIndexer
 from slc.outdated.interfaces import IObjectOutdatedToggleEvent
 from zope.annotation.interfaces import IAnnotatable
@@ -86,12 +85,4 @@ class ToggleOutdated(BrowserView):
         self.context.reindexObject()
         return msg
 
-class OutdatedViewlet(ViewletBase):
-    """A viewlet that indicates that content is outdated
-    """
-    outdated = Outdated()
 
-    def render(self):
-        if not self.outdated:
-            return ""
-        return super(OutdatedViewlet, self).render()
