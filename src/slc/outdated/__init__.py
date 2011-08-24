@@ -7,10 +7,27 @@ from plone.indexer.interfaces import IIndexer
 from zope.annotation.interfaces import IAnnotatable
 from zope.annotation.interfaces import IAnnotations
 from zope.component import adapts
-from zope.interface import implements
-
+from zope.component.interfaces import IObjectEvent
+from zope.interface import Attribute, implements
+from zope.event import notify
 
 ANNOTATION_KEY="slc.outdated"
+
+
+class IObjectOutdatedToggleEvent(IObjectEvent):
+    """Sent after an object was translated."""
+
+    object = Attribute("The object being handled.")
+    status = Attribute("The new outdated status.")
+
+
+class ObjectOutdatedToggleEvent(object):
+    """Sent before an object is translated."""
+    implements(IObjectOutdatedToggleEvent)
+
+    def __init__(self, context, status):
+        self.object = context
+        self.status = status
 
 
 class Outdated(object):
@@ -67,6 +84,8 @@ class ToggleOutdated(BrowserView):
             msg = u"Marked '%s' as outdated."
         else:
             msg = u"Removed outdated flag from '%s'."
+        event = ObjectOutdatedToggleEvent(self.context, self.outdated)
+        notify(event)
         name = self.context.title_or_id()
         if not isinstance(name, unicode):
             name = name.decode(getSiteEncoding(self.context))
