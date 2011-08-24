@@ -71,7 +71,7 @@ class ToggleOutdated(BrowserView):
         if not isinstance(name, unicode):
             name = name.decode(getSiteEncoding(self.context))
         msg = msg % name
-        self.context.reindexObject(idxs=["outdated"])
+        self.context.reindexObject()
         return msg
 
 class OutdatedViewlet(ViewletBase):
