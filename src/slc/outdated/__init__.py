@@ -1,14 +1,9 @@
-from Products.CMFPlone.utils import getSiteEncoding
-from Products.Five.browser import BrowserView
 from Products.ZCatalog.interfaces import IZCatalog
-from Products.statusmessages.interfaces import IStatusMessage
 from plone.indexer.interfaces import IIndexer
 from slc.outdated.interfaces import IObjectOutdatedToggleEvent
-from zope.annotation.interfaces import IAnnotatable
-from zope.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAnnotatable, IAnnotations
 from zope.component import adapts
 from zope.interface import implements
-from zope.event import notify
 
 ANNOTATION_KEY="slc.outdated"
 
@@ -53,36 +48,4 @@ class OutdatedIndexer(object):
 
     def __call__(self):
         return self.outdated
-
-
-class ToggleOutdated(BrowserView):
-    """Toggle the outdated flag
-    """
-    outdated = Outdated()
-
-    def __call__(self, value=None):
-        msg = self.toggle(value)
-        messages = IStatusMessage(self.request)
-        messages.addStatusMessage(msg, type="info")
-        self.request.response.redirect(self.context.absolute_url())
-
-    def toggle(self, value=None):
-        """ same as __call__ but without the redirect """
-        if value is None:
-            self.outdated = not self.outdated
-        else:
-            self.outdated = not not value
-        if self.outdated:
-            msg = u"Marked '%s' as outdated."
-        else:
-            msg = u"Removed outdated flag from '%s'."
-        event = ObjectOutdatedToggleEvent(self.context, self.outdated)
-        notify(event)
-        name = self.context.title_or_id()
-        if not isinstance(name, unicode):
-            name = name.decode(getSiteEncoding(self.context))
-        msg = msg % name
-        self.context.reindexObject()
-        return msg
-
 

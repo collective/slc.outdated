@@ -21,7 +21,7 @@
       for="*"
       name="object_toggle_outdated"
       permission="slc.ToggleOutdated"
-      class=".ToggleOutdated"
+      class=".browser.ToggleOutdated"
       />
 
     <browser:resource
