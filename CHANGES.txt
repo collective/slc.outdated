@@ -4,8 +4,12 @@ slc.outdated Changelog
 1.0b9 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Toggle outdated now makes a general call to reindexObject (before, only
+  one index was re-indexed) so that the object's modification date gets set
+  [thomasw]
+- An event now gets sent when the outdated status is changed; can be used for
+  custom handling of outdated content, e.g. regarding link checking [thomasw]
+- Restructuring, removed all functional code from __init__.py [thomasw]
 
 1.0b8 (2011-07-21)
 ------------------
