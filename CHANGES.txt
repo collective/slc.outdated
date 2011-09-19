@@ -1,7 +1,7 @@
 slc.outdated Changelog
 ======================
 
-1.0b9 (unreleased)
+1.1 (unreleased)
 ------------------
 
 - Toggle outdated now makes a general call to reindexObject (before, only
