@@ -1,8 +1,8 @@
 slc.outdated Changelog
 ======================
 
-1.1 (unreleased)
-------------------
+1.1 (2011-09-21)
+----------------
 
 - Toggle outdated now makes a general call to reindexObject (before, only
   one index was re-indexed) so that the object's modification date gets set
