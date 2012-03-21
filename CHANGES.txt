@@ -1,7 +1,7 @@
 slc.outdated Changelog
 ======================
 
-1.1.1 (2012-03-21)
+1.2 (2012-03-21)
 ------------------
 
 - Add utility method to directly check if an object is outdated, instead of
