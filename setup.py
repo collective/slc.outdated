@@ -23,7 +23,7 @@ setup(name='slc.outdated',
       url='https://github.com/collective/slc.outdated',
       license='General Public Licence',
       packages=find_packages('src'),
-      package_dir = {'': 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['slc'],
       include_package_data=True,
       zip_safe=False,
@@ -33,8 +33,9 @@ setup(name='slc.outdated',
       ],
       extras_require={
           'test': [
-              'interlude',
-          ]
+              'plone.app.testing',
+              'mock',
+          ],
       },
       entry_points="""
         [z3c.autoinclude.plugin]
