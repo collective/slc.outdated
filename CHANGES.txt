@@ -4,7 +4,9 @@ slc.outdated Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add p.a.testing setup and basic tests if the product is properly installed.
+  [jcbrand]
+- Added missing autoinclude [thomasw]
 
 
 1.2 (2012-03-21)
