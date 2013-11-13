@@ -34,6 +34,7 @@ setup(name='slc.outdated',
       extras_require={
           'test': [
               'plone.app.testing',
+              'plone.api',
               'mock',
           ],
       },

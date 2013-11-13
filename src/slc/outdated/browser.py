@@ -14,7 +14,9 @@ class ToggleOutdated(BrowserView):
         msg = self.toggle(value)
         messages = IStatusMessage(self.request)
         messages.addStatusMessage(msg, type="info")
-        self.request.response.redirect(self.context.absolute_url())
+        redirect = self.request.get_header("referer") \
+            or '/'.join([self.context.absolute_url(), 'view'])
+        self.request.response.redirect(redirect)
 
     def toggle(self, value=None):
         """ same as __call__ but without the redirect """
