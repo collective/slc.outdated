@@ -3,6 +3,7 @@ from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from slc.outdated import Outdated, ObjectOutdatedToggleEvent
 from zope.event import notify
+import six
 
 
 class ToggleOutdated(BrowserView):
@@ -31,7 +32,7 @@ class ToggleOutdated(BrowserView):
         event = ObjectOutdatedToggleEvent(self.context, self.outdated)
         notify(event)
         name = self.context.title_or_id()
-        if not isinstance(name, unicode):
+        if not isinstance(name, six.text_type):
             name = name.decode(getSiteEncoding(self.context))
         msg = msg % name
         self.context.reindexObject()
