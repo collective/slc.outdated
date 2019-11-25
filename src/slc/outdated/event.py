@@ -3,7 +3,7 @@ from zope.interface import implements
 
 
 class ObjectOutdatedToggleEvent(object):
-    """Sent before an object is translated."""
+    """Sent before an object's outdated state is changed."""
     implements(IObjectOutdatedToggleEvent)
 
     def __init__(self, context, status):
