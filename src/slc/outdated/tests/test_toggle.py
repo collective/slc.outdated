@@ -1,4 +1,4 @@
-import unittest2 as unittest
+import unittest
 
 from plone import api
 from plone.app.testing import helpers, SITE_OWNER_NAME

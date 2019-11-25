@@ -10,11 +10,14 @@ class SlcOutdated(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
+        import plone.app.contenttypes
+        self.loadZCML('configure.zcml', package=plone.app.contenttypes)
         import slc.outdated
         self.loadZCML('configure.zcml', package=slc.outdated)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'slc.outdated:default')
+        applyProfile(portal, 'plone.app.contenttypes:default')
 
 
 SLC_OUTDATED_FIXTURE = SlcOutdated()
