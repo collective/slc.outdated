@@ -9,6 +9,7 @@ matrix:
       env: PLONE_VERSION=5
 install:
   - mkdir -p buildout-cache/downloads
+  - cp requirements-$PLONE_VERSION.x.txt requirements.txt
   - python bootstrap.py
   - bin/buildout -c test-$PLONE_VERSION.x.cfg
 script:
