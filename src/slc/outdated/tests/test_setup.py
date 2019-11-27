@@ -1,7 +1,10 @@
 from plone import api
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import get_installer
 from slc.outdated.tests.base import INTEGRATION_TESTING
+try:
+    from Products.CMFPlone.utils import get_installer
+except ImportError:
+    get_installer = None
 
 import unittest
 
@@ -11,7 +14,10 @@ class TestInstall(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        self.installer = get_installer(self.portal, self.layer["request"])
+        if get_installer is not None:
+            self.installer = get_installer(self.portal, self.layer["request"])
+        else:
+            self.installer = getToolByName(self.portal, 'portal_quickinstaller')
 
     def test_product_installed(self):
         self.assertTrue(self.installer.isProductInstalled('slc.outdated'))
