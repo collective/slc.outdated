@@ -1,9 +1,8 @@
-from Products.CMFPlone.utils import getSiteEncoding
+from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser import BrowserView
 from Products.statusmessages.interfaces import IStatusMessage
 from slc.outdated import Outdated, ObjectOutdatedToggleEvent
 from zope.event import notify
-import six
 
 
 class ToggleOutdated(BrowserView):
@@ -31,9 +30,7 @@ class ToggleOutdated(BrowserView):
             msg = u"Removed outdated flag from '%s'."
         event = ObjectOutdatedToggleEvent(self.context, self.outdated)
         notify(event)
-        name = self.context.title_or_id()
-        if not isinstance(name, six.text_type):
-            name = name.decode(getSiteEncoding(self.context))
+        name = safe_unicode(self.context.title_or_id())
         msg = msg % name
         self.context.reindexObject()
         return msg
