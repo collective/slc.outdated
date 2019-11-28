@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/syslabcom/slc.outdated.svg?branch=master)](https://travis-ci.org/syslabcom/slc.outdated)
+[![Build Status](https://travis-ci.org/collective/slc.outdated.svg?branch=master)](https://travis-ci.org/collective/slc.outdated)
 
 slc.outdated
 ============
