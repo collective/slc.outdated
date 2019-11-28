@@ -30,7 +30,7 @@ class TestInstall(unittest.TestCase):
 
     def test_action_registered(self):
         portal_actions = getToolByName(self.portal, 'portal_actions')
-        self.assertIn('toggle_outdated', list(portal_actions.object_buttons.keys()))
+        self.assertIn('toggle_outdated', portal_actions.object_buttons)
 
     def test_index_added(self):
         catalog = getToolByName(self.portal, 'portal_catalog')
