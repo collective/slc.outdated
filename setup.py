@@ -3,12 +3,13 @@ import sys, os
 
 version = '1.3.1.dev0'
 shortdesc = "Mark and treat plone content as outdated"
-longdesc = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
+longdesc = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
 
 setup(name='slc.outdated',
       version=version,
       description=shortdesc,
       long_description=longdesc,
+      long_description_content_type="text/markdown",
       classifiers=[
             'Development Status :: 4 - Beta',
             'Environment :: Web Environment',

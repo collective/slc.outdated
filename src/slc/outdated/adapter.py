@@ -1,8 +1,8 @@
 from Products.ZCatalog.interfaces import IZCatalog
 from plone.indexer.interfaces import IIndexer
 from zope.annotation.interfaces import IAnnotatable, IAnnotations
-from zope.component import adapts
-from zope.interface import implements
+from zope.component import adapter
+from zope.interface import implementer
 
 ANNOTATION_KEY = 'slc.outdated'
 
@@ -24,11 +24,11 @@ class Outdated(object):
             IAnnotations(obj.context)[ANNOTATION_KEY] = val
 
 
+@implementer(IIndexer)
+@adapter(IAnnotatable, IZCatalog)
 class OutdatedIndexer(object):
     """Index the annotated outdated flag
     """
-    implements(IIndexer)
-    adapts(IAnnotatable, IZCatalog)
 
     outdated = Outdated()
 

@@ -1,0 +1,16 @@
+language: python
+matrix:
+  include:
+    - python: 2.7
+      env: PLONE_VERSION=4.3
+    - python: 2.7
+      env: PLONE_VERSION=5.2
+    - python: 3.7
+      env: PLONE_VERSION=5.2
+install:
+  - mkdir -p buildout-cache/downloads
+  - cp requirements-$PLONE_VERSION.txt requirements.txt
+  - python bootstrap.py
+  - bin/buildout -c test-$PLONE_VERSION.cfg
+script:
+  - bin/test
