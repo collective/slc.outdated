@@ -1,2 +1,15 @@
 include *.rst
 graft docs
+include *.org
+include *.py
+include *.txt
+include base.cfg
+include buildout-plone3.cfg
+include buildout-plone4.cfg
+include buildout.cfg
+include test-4.3.cfg
+include test-5.2.cfg
+recursive-include src *.png
+recursive-include src *.pt
+recursive-include src *.xml
+recursive-include src *.zcml
